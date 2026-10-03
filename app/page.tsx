@@ -15,7 +15,8 @@ export default function Home() {
   const heroCharacterRef = useRef<HTMLDivElement>(null);
   const gateMediaRef = useRef<HTMLDivElement>(null);
 
-  const contractAddress = '0xfa6d9b504848606eb9aec04ccc161d169b3f2159';
+  const contractAddress =
+    process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0xfa6d9b504848606eb9aec04ccc161d169b3f2159';
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -249,7 +250,7 @@ export default function Home() {
           <div className="nav-actions">
             <a
               className="icon-link text-slate-300 hover:text-white"
-              href="https://x.com/Brewinu_"
+              href="https://x.com/SuperInuBrew"
               target="_blank"
               rel="noreferrer"
             >
@@ -294,12 +295,12 @@ export default function Home() {
                 了解 SUPER INU <span>↓</span>
               </a>
               <a
-                href="https://x.com/Brewinu_"
+                href="https://x.com/SuperInuBrew"
                 target="_blank"
                 rel="noreferrer"
                 className="ghost"
               >
-                官方推特 @Brewinu_ ↗
+                官方推特 @SuperInuBrew ↗
               </a>
             </div>
           </div>
@@ -529,7 +530,7 @@ export default function Home() {
               </a>
               <span>·</span>
               <a
-                href="https://dexscreener.com/bsc/0xfa6d9b504848606eb9aec04ccc161d169b3f2159"
+                href={`https://dexscreener.com/bsc/${contractAddress}`}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-300 flex items-center gap-1 transition-colors"
@@ -538,7 +539,7 @@ export default function Home() {
               </a>
               <span>·</span>
               <a
-                href="https://pancakeswap.finance/swap?outputCurrency=0xfa6d9b504848606eb9aec04ccc161d169b3f2159&chain=bsc"
+                href={`https://pancakeswap.finance/swap?outputCurrency=${contractAddress}&chain=bsc`}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-300 flex items-center gap-1 transition-colors"
@@ -574,8 +575,8 @@ export default function Home() {
           </div>
 
           <div className="manifesto-footer">
-            <a href="https://x.com/Brewinu_" target="_blank" rel="noreferrer">
-              官方推特 X / @BREWINU_ ↗
+            <a href="https://x.com/SuperInuBrew" target="_blank" rel="noreferrer">
+              官方推特 X / @SuperInuBrew ↗
             </a>
             <span>$SI // SUPER INU (超级犬)</span>
             <a href="https://brewfamily.dev" target="_blank" rel="noreferrer">
