@@ -16,7 +16,17 @@ export default function Home() {
   const gateMediaRef = useRef<HTMLDivElement>(null);
 
   const contractAddress =
-    process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0xfa6d9b504848606eb9aec04ccc161d169b3f2159';
+    process.env.NEXT_PUBLIC_CONTRACT_ADDRESS?.trim() || '0xfa6d9b504848606eb9aec04ccc161d169b3f2159';
+
+  const bscscanUrl =
+    process.env.NEXT_PUBLIC_BSCSCAN_URL?.trim() || `https://bscscan.com/token/${contractAddress}`;
+
+  const dexscreenerUrl =
+    process.env.NEXT_PUBLIC_DEXSCREENER_URL?.trim() || `https://dexscreener.com/bsc/${contractAddress}`;
+
+  const pancakeswapUrl =
+    process.env.NEXT_PUBLIC_PANCAKESWAP_URL?.trim() ||
+    `https://pancakeswap.finance/swap?outputCurrency=${contractAddress}&chain=bsc`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -521,7 +531,7 @@ export default function Home() {
 
             <div className="mt-6 flex flex-wrap justify-center items-center gap-4 text-xs font-mono text-slate-400">
               <a
-                href={`https://bscscan.com/token/${contractAddress}`}
+                href={bscscanUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-300 flex items-center gap-1 transition-colors"
@@ -530,7 +540,7 @@ export default function Home() {
               </a>
               <span>·</span>
               <a
-                href={`https://dexscreener.com/bsc/${contractAddress}`}
+                href={dexscreenerUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-300 flex items-center gap-1 transition-colors"
@@ -539,7 +549,7 @@ export default function Home() {
               </a>
               <span>·</span>
               <a
-                href={`https://pancakeswap.finance/swap?outputCurrency=${contractAddress}&chain=bsc`}
+                href={pancakeswapUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-amber-300 flex items-center gap-1 transition-colors"
